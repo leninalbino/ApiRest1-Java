@@ -10,5 +10,5 @@ public interface IEmployeeService {
 	 void saveEmployee(Employee employee);
 	Employee findById ( Long id);
 	void deleteEmployee(Long id);
-	Boolean statusEmployee(Long id);
+	Employee updateStatusEmployee(Long id);
 }

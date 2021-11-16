@@ -33,6 +33,7 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	@Override
 	public void deleteEmployee(Long id) {
 		// TODO Auto-generated method stub
+		iEmployeeDao.deleteById(id);
 	}
 	@Transactional(readOnly = true)
 	@Override
@@ -42,19 +43,16 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	}
 
 	@Override
-	public Boolean statusEmployee(Long id) {
+	public Employee updateStatusEmployee(Long id) {
 		
 			Employee employee = findById(id);
-			if (employee == null) {
-				return false;
-			}else {
+			
 				if(employee.isState()) {
 					iEmployeeDao.updateStatus(false, employee.getId());
 				}else {
 					iEmployeeDao.updateStatus(true, employee.getId());
 				}
-				return true;
-			}
+	return employee;
 		}
 	
 
